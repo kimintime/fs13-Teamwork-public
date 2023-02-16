@@ -30,27 +30,27 @@ CREATE TABLE category(
 );
 CREATE TABLE review(
     id SERIAL PRIMARY KEY,
-    book_id INT REFERENCES book(id),
+    book_id INT REFERENCES book(id) ON DELETE CASCADE,
     review TEXT NOT NULL
 );
 CREATE TABLE book_author_map(
-    book_id INT REFERENCES book(id),
-    author_id INT REFERENCES author(id),
+    book_id INT REFERENCES book(id) ON DELETE CASCADE,
+    author_id INT REFERENCES author(id) ON DELETE CASCADE,
     PRIMARY KEY(book_id, author_id)
 );
 CREATE TABLE book_category_map(
-    book_id INT REFERENCES book(id),
-    category_id INT REFERENCES category(id),
+    book_id INT REFERENCES book(id) ON DELETE CASCADE,
+    category_id INT REFERENCES category(id) ON DELETE CASCADE,
     PRIMARY KEY (book_id, category_id)
 );
 CREATE TABLE copy(
     id SERIAL PRIMARY KEY,
-    book_id INT REFERENCES book(id),
+    book_id INT REFERENCES book(id) ON DELETE CASCADE,
     is_available BOOLEAN DEFAULT true
 );
 CREATE TABLE cart_item(
-    user_id uuid REFERENCES "user"(id),
-    copy_id INT REFERENCES copy(id),
+    user_id uuid REFERENCES "user"(id) ON DELETE CASCADE,
+    copy_id INT REFERENCES copy(id) ON DELETE CASCADE,
     PRIMARY KEY(user_id, copy_id)
 );
 CREATE TABLE reservation(
