@@ -1,11 +1,13 @@
--- Getting all available books from database with categories and authors
+-- Getting all available books from database with category/categories, publisher(s) and author(s)
 
-SELECT t1.title, t2.firstname, t2.lastname, t3.title, (SELECT COUNT(*) as available_for_loan FROM copy WHERE t1.id = copy.book_id AND copy.is_available = true) 
+SELECT t1.title, t2.firstname as author_firstname, t2.lastname as author_lastname, t3.title as category, t4.publisher_name as publisher, (SELECT COUNT(*) as available_for_loan FROM copy WHERE t1.id = copy.book_id AND copy.is_available = true) 
 FROM book t1 
 JOIN book_author_map author_map ON t1.id = author_map.book_id
 JOIN author t2 ON t2.id = author_map.author_id
 JOIN book_category_map category_map ON t1.id = category_map.book_id
-JOIN category t3 ON t3.id = category_map.category_id;
+JOIN category t3 ON t3.id = category_map.category_id
+JOIN book_publisher_map publisher_map ON t1.id = publisher_map.book_id
+JOIN publisher t4 ON t4.id = publisher_map.publisher_id;
 
 -- Getting single book (param @id = 1)
 

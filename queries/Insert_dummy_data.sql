@@ -40,6 +40,23 @@ VALUES
 ('The master and the margarita'),
 ('The hitchhikers guide to the galaxy');
 
+INSERT INTO publisher(publisher_name)
+VALUES
+('WSOY'),
+('Keltainen kirjasto'),
+('Basam Books'),
+('Ridler Books'), 
+('Werner Söderstöm Osakeyhtiö');
+
+INSERT INTO book_publisher_map(book_id, publisher_id)
+VALUES
+(1, 5),
+(2, 4),
+(3, 3),
+(4, 1),
+(5, 2),
+(6, 1);
+
 INSERT INTO book_author_map(book_id, author_id)
 VALUES
 (1, 1),

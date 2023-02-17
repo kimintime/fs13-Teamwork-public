@@ -28,10 +28,19 @@ CREATE TABLE category(
     id SERIAL PRIMARY KEY,
     title VARCHAR(50) NOT NULL
 );
+CREATE TABLE publisher(
+    id serial PRIMARY KEY,
+    publisher_name VARCHAR(50)
+);
 CREATE TABLE review(
     id SERIAL PRIMARY KEY,
     book_id INT REFERENCES book(id) ON DELETE CASCADE,
     review TEXT NOT NULL
+);
+CREATE TABLE book_publisher_map(
+    id SERIAL PRIMARY KEY,
+    book_id INT REFERENCES book(id),
+    publisher_id INT REFERENCES publisher(id)
 );
 CREATE TABLE book_author_map(
     book_id INT REFERENCES book(id) ON DELETE CASCADE,
@@ -55,8 +64,8 @@ CREATE TABLE cart_item(
 );
 CREATE TABLE reservation(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
-    user_id uuid REFERENCES "user"(id),
-    copy_id INT REFERENCES copy(id),
+    user_id uuid REFERENCES "user"(id) ON DELETE CASCADE,
+    copy_id INT REFERENCES copy(id) ON DELETE CASCADE,
     reserved_at DATE DEFAULT NOW(),
     due_date DATE DEFAULT NOW() + INTERVAL '1 month',
     returned BOOLEAN DEFAULT false
