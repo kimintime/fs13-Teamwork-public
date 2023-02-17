@@ -39,8 +39,8 @@ CREATE TABLE review(
 );
 CREATE TABLE book_publisher_map(
     id SERIAL PRIMARY KEY,
-    book_id INT REFERENCES book(id),
-    publisher_id INT REFERENCES publisher(id)
+    book_id INT REFERENCES book(id) ON DELETE CASCADE,
+    publisher_id INT REFERENCES publisher(id) ON DELETE CASCADE
 );
 CREATE TABLE book_author_map(
     book_id INT REFERENCES book(id) ON DELETE CASCADE,

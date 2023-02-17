@@ -23,7 +23,7 @@ WHERE t1.id = 1; -- Here replace 1 with @id
 
 SELECT id 
 FROM copy
-WHERE book_id = 5 --use parameter @book_id in place of 5
+WHERE book_id = 5 
 AND copy.is_available = true
 LIMIT 1;
 
@@ -55,3 +55,19 @@ DELETE FROM cart_item WHERE copy_id = @copy_id;
 
 UPDATE reservation SET returned = true WHERE copy_id = @copy_id;
 UPDATE copy SET is_available = true WHERE id = @copy_id;
+
+-- Check for reservations not returned on time. Requires a current date as parameter in form = YYYY-MM-DD in javascript you get it like this new Date(Date.now()).ToISOString()
+SELECT t3.firstname, t3.lastname, t4.title as book, t2.id as copy_id, t1.reserved_at, t1.due_date 
+FROM reservation t1
+JOIN copy t2 ON t1.copy_id = t2.id
+JOIN "user" t3 ON t1.user_id = t3.id
+JOIN book t4 ON t2.book_id = t4.id
+WHERE due_date < @date AND returned = 'false';
+
+-- Check reservations with book titles and user first and last names
+
+SELECT t3.firstname, t3.lastname, t4.title as book, t2.id as copy_id, t1.reserved_at, t1.due_date 
+FROM reservation t1
+JOIN copy t2 ON t1.copy_id = t2.id
+JOIN "user" t3 ON t1.user_id = t3.id
+JOIN book t4 ON t2.book_id = t4.id;
