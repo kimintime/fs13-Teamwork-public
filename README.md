@@ -30,3 +30,4 @@ Main features:
 
 1. Design the API endpoints, following REST API architecture. Only design file needed (either in .txt or diagram, screenshot)
 2. Create ERD diagram for database
+...
