@@ -5,7 +5,7 @@ Jeremias Ryttäri [JeremiasRy](https://github.com/JeremiasRy) - Lead Developer
 
 Luan (Nguyen Thanh) Le [ELNAUL99](https://github.com/ELNAUL99) - Endpoint Designer
 
-Kimberly Ruohio [kimintime](https://github.com/kimtintime) - Architect and Documentation
+Kimberly Ruohio [kimintime](https://github.com/kimintime) - Architect and Documentation
 
 Github link to the project: <TBA>
 
