@@ -13,11 +13,11 @@ Github link to the project: <TBA>
 In this documentation we will describe the library database model, and post example queries, which detail finding all books in the database, finding a single book, as well as demonstrating how reserving a book works, looking at cart information, and book inventory after a reservation is made.
 
 ## Database Model
-The ERD for our library database is shown below. Breaking it down into plain English, many users can have one role, admin (or librarian), or customer. The database allows one user to have many carts, for example, sessions on multiple devices. The cart, linked to individual users, are copies of specific books, and it is those specific copies that can be lent out from the cart to become reservations.
+The ERD for our library database is shown below. Breaking it down into plain English, many users can have one role, admin (or librarian), or customer. The database allows one user to have many cart items, and those cart items are copies of specific books. It is those specific copies that can be lent out to become reservations.
 
 ![backend_project](https://user-images.githubusercontent.com/40215472/219979882-b295c08d-2ac5-4a7f-b05f-ceb173f48d28.png)
 
-The books themselves may have many reviews, many authors, many categories, and many publishers. There are individual mapping tables between the book and authors, categories, and publishers, so that queries return cleanly, with no empty rows or columns, depending on for example, if a book had three authors and two categories. 
+One book may have many reviews, many authors, many categories, and many publishers. There are individual mapping tables between the book and authors, categories, and publishers, because while one book can have many reviews, those reviews are specific to that book. Many books can have the same authors, and same categories.
 
 ## Queries
 The queries for the the database are separated by type. [Create_db_and_tables.sql](../main/queries/Create_db_and_tables.sql) creates the database and its tables, as the name suggests. Run that first if testing this out for yourself. After which, it’s time to stock the library with users and books, with [Insert_dummy_data.sql](../main/queries/Insert_dummy_data.sql).
