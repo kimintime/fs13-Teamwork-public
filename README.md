@@ -1,33 +1,70 @@
-# Backend project
+# Library Database Design Documentation
+The following documentation details the design of a library database system, for possible future implementation in a Fullstack project. It is a group project in Integrify’s Fullstack Academy course, and the group roles are as follows:
 
-This assignment requires teamwork. Your team has been assigned one of two topics:
+Jeremias Ryttäri [JeremiasRy](https://github.com/JeremiasRy) - Lead Developer
 
-1. Library management system
-Main features:
+Luan (Nguyen Thanh) Le [ELNAUL99](https://github.com/ELNAUL99) - Endpoint Designer
 
-    - Users
-    - Books
-    - Authors
-    - Carts
-    - Optional: Reviews
-    - etc ...
+Kimberly Ruohio [kimintime](https://github.com/kimintime) - Architect and Documentation
 
-2. E-Commerce Platform
-Main features:
+Github link to the project: <TBA>
 
-    - Users
-    - Products
-    - Categories
-    - Carts
-    - Optional: Reviews
-    - etc ...
+## Introduction
+In this documentation we will describe the library database model, and post example queries, which detail finding all books in the database, finding a single book, as well as demonstrating how reserving a book works, looking at cart information, and book inventory after a reservation is made.
 
----
+## Database Model
+The ERD for our library database is shown below. Breaking it down into plain English, many users can have one role, admin (or librarian), or customer. The database allows one user to have many carts, for example, sessions on multiple devices. The cart, linked to individual users, are copies of specific books, and it is those specific copies that can be lent out from the cart to become reservations.
 
-## Requirements
+![backend_project](https://user-images.githubusercontent.com/40215472/219979882-b295c08d-2ac5-4a7f-b05f-ceb173f48d28.png)
 
-*For team assignment, only 1 member in the team should fork the repo. Then, admin can invite other members to contribute in the same repo. Remember to have develop branch before merging to main. And each feature/schema/bug/issue should have it's own branch, and taken by only 1 member. Before making any new branch, make sure you run `git pull` to avoid the conflicts with the remote repo.*
+The books themselves may have many reviews, many authors, many categories, and many publishers. There are individual mapping tables between the book and authors, categories, and publishers, so that queries return cleanly, with no empty rows or columns, depending on for example, if a book had three authors and two categories. 
 
-1. Design the API endpoints, following REST API architecture. Only design file needed (either in .txt or diagram, screenshot)
-2. Create ERD diagram for database
-...
+## Queries
+The queries for the the database are separated by type. [Create_db_and_tables.sql](../main/queries/Create_db_and_tables.sql) creates the database and its tables, as the name suggests. Run that first if testing this out for yourself. After which, it’s time to stock the library with users and books, with [Insert_dummy_data.sql](../main/queries/Insert_dummy_data.sql).
+
+### CRUD operations
+CRUD operations are included in [Basic CRUD.sql](../main/queries/Basic%20CRUD.sql), but the emphasis is on basic. Ids need to be checked to be unique, but it should be clear within the file where to put these ids. 
+
+### Example Usage
+Examples of how the system loans out books, and how searching for all books or specific books works, have a look at [Example_usage.sql](../main/queries/Example_usage.sql).
+
+## Library Database in Action
+
+### Information for all Books
+First, let’s have a look at the books in the library, and how many are available. As you can see, some books are not suitable for just one category, which the individual mapping tables allow for a clean display. Also note the number of copies for each book.
+    
+
+![All books](../main/demo_pics/get_all_books_with_info.png)
+
+    
+### Information for one Book
+Next, let’s try looking up one book, **Steppenwolf**. It is listed as fiction, romance, and there are three copies available.
+
+
+![One book](../main/demo_pics/get_single_book_with_info.png)
+
+
+### Adding Items to Cart
+Before having a look at the cart system, we must first add items to the cart. The screenshot below shows the users in the database, where we see Jeremias is adding three books to his cart: **Steppenwolf**, **Brave New World**, and the **Hitchhiker’s Guide to the Galaxy**. 
+
+   
+![Adding items to cart](../main/demo_pics/add_items_to_cart.png)
+    
+![Cart info](../main/demo_pics/get_cart_info.png)
+
+    
+### Reservation and Result
+Having completed the checkout process, Jeremias has made the following reservation, and we can see the checkout date and due date.
+    
+    
+![Reservation](../main/demo_pics/making_reservations.png)
+    
+
+Now if we have another look at the information for all books in the database, we that the quantity for each book has been updated.
+    
+    
+![Result](../main/demo_pics/get_all_books_after_reservations.png)
+    
+
+## Endpoints
+The endpoints are detailed in [API endpoints.txt](../main/API%20endpoints.txt). 
