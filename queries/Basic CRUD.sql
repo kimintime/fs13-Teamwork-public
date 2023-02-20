@@ -68,3 +68,21 @@ DELETE FROM "user" WHERE id = @id;
 --Example is for book but this base query works for most tables (author,category,publisher,user)
 
 UPDATE book SET title = @title WHERE id = @id;
+
+--READ
+
+--books by category
+--by name
+SELECT t2.title as book, t1.title as category 
+FROM book_category_map map 
+JOIN category t1 ON map.category_id = t1.id 
+JOIN book t2 ON map.book_id = t2.id 
+WHERE t1.title = 'Romance';
+--by id
+SELECT * FROM book_category_map map JOIN book ON map.book_id = book.id WHERE map.category_id = @id;
+--by author
+SELECT t2.title as book, t1.firstname || ' ' || t1.lastname as author 
+FROM book_author_map map 
+JOIN author t1 ON map.author_id = t1.id 
+JOIN book t2 ON map.book_id = t2.id 
+WHERE t1.firstname = 'Douglas' AND t1.lastname = 'Adams';

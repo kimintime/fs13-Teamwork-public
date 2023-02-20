@@ -55,7 +55,8 @@ VALUES
 (3, 3),
 (4, 1),
 (5, 2),
-(6, 1);
+(6, 1),
+(7, 1);
 
 INSERT INTO book_author_map(book_id, author_id)
 VALUES

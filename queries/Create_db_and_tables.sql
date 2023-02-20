@@ -65,7 +65,7 @@ CREATE TABLE cart_item(
 CREATE TABLE reservation(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
     user_id uuid REFERENCES "user"(id) ON DELETE CASCADE,
-    copy_id INT REFERENCES copy(id) ON DELETE CASCADE,
+    copy_id INT UNIQUE REFERENCES copy(id) ON DELETE CASCADE,
     reserved_at DATE DEFAULT NOW(),
     due_date DATE DEFAULT NOW() + INTERVAL '1 month',
     returned BOOLEAN DEFAULT false

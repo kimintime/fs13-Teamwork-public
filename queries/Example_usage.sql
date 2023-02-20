@@ -1,7 +1,10 @@
+-- Check users
+SELECT t1.id, t1.firstname, t1.lastname, t1.password, t2.user_role FROM "user" t1 JOIN role t2 ON t1.role_id = t2.id; 
+
 -- Getting all available books from database with category/categories, publisher(s) and author(s)
 -- example result using this query => demo_pics / get_all_books_with_info
 
-SELECT t1.title, t2.firstname as author_firstname, t2.lastname as author_lastname, t3.title as category, t4.publisher_name as publisher, (SELECT COUNT(*) as available_for_loan FROM copy WHERE t1.id = copy.book_id AND copy.is_available = true) 
+SELECT t1.id as book_id, t1.title, t2.firstname || ' ' || t2.lastname as author, t3.title as category, t4.publisher_name as publisher, (SELECT COUNT(*) as available_for_loan FROM copy WHERE t1.id = copy.book_id AND copy.is_available = true) 
 FROM book t1 
 JOIN book_author_map author_map ON t1.id = author_map.book_id
 JOIN author t2 ON t2.id = author_map.author_id
@@ -25,7 +28,7 @@ WHERE t1.id = 1; -- Here replace 1 with @id
 
 SELECT id 
 FROM copy
-WHERE book_id = 5 
+WHERE book_id = 6
 AND copy.is_available = true
 LIMIT 1;
 
