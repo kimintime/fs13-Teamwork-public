@@ -50,6 +50,7 @@ Categories
 Carts
 • GET /users/{id}/cart - Get all copies for a specific user's cart
 • POST /users/{id}/cart/copies/{id} - Add copies into cart
+• DELETE /users/{id}/cart/copies/{id} - Add copies into cart
 
 Reservations
 • GET admin/reservations - Get a list of all reservations
