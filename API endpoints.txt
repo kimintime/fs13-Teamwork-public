@@ -19,7 +19,7 @@ Books
 • GET /books/{id}/copies - Get a list of all copies for a specific book
 • GET /books/{id}/copies/{id} - Get a specific copy by ID
 • POST /books/{id}/copies - Create a new copy
-• PUT /books/{id}/copies/{id} - Update an existing copy by ID
+• PUT /books/{id}/copies/{id} - Change the availability of the copy by ID
 • DELETE /books/{id}/copies/{id} - Delete a specific copy by ID
 • GET /books/{id}/authors - Get a list of all authors for a specific book
 • GET /books/{id}/publisher - Get the publisher for a specific book
@@ -49,7 +49,8 @@ Categories
 • DELETE /categories/{id} - Delete a specific category
 
 Carts
-• GET /cart/{user.id} - Get cart for a specific user
+• GET /users/{id}/cart - Get all copies for a specific user's cart
+• PUT /users/{id}/cart - Add copies into cart
 
 Reservations
 • GET /reservations - Get a list of all reservations
