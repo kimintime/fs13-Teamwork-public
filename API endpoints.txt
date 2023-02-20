@@ -57,15 +57,17 @@ Reservations
 • GET admin/reservations/active - Get a list of all reservations that haven't past the due day => return true
 • GET admin/reservations/expired - Get a list of all reservations that have past the due day => return false
 • GET admin/reservations/{id} - Get reservation details for a specific reservation
-• POST admin/reservations - Add a new reservation
-• PUT admin/reservations/{id} - Update reservation details for a specific reservation
+• POST users/{id}/reservations - Make a new reservation for specific user
+• PUT users/{id}/reservations/{id} - Update reservation details for a specific reservation
+• DELETE users/{id}/reservations/{id} - Delete a specific reservation
 • DELETE admin/reservations/{id} - Delete a specific reservation
 
 Reviews (Optional)
 • GET /books/{id}/reviews - Get a list of all reviews for a specific book
 • GET /books/{id}/reviews/{id} - Get review details for a specific review
-• POST /books/{id}/reviews - Add a new review
-• PUT /books/{id}/reviews/{id} - Update review details for a specific review
-• DELETE /books/{id}/reviews/{id} - Delete a specific review
+• POST users/{id}/books/{id}/reviews - Make a new review as a user
+• PUT users/{id}/books/{id}/reviews/{id} - Update review details for a specific review
+• DELETE users/{id}/books/{id}/reviews/{id} - Delete a specific review as a user
+• DELETE admin/books/{id}/reviews/{id} - Delete a specific review as an admin
 
 
