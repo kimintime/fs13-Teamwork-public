@@ -49,8 +49,8 @@ Categories
 • DELETE /categories/{id} - Delete a specific category
 
 Carts
-• GET /users/{id}/cart - Get cart for a specific user
-• PUT /users/{id}/cart/{id} - Add copies into cart
+• GET /users/{id}/cart - Get all copies for a specific user's cart
+• PUT /users/{id}/cart - Add copies into cart
 
 Reservations
 • GET /reservations - Get a list of all reservations
