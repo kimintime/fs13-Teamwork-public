@@ -12,6 +12,15 @@ Github link to the project: <TBA>
 ## Introduction
 In this documentation we will describe the library database model, and post example queries, which detail finding all books in the database, finding a single book, as well as demonstrating how reserving a book works, looking at cart information, and book inventory after a reservation is made.
 
+### Features
+The library database features:
+
+- User login and user roles (customer or admin)
+- CRUD functionality with the appropriate authorizations
+- Book reservation system that tracks the number of books available, checkout and due dates, and which users have loans.
+- Book reviews
+
+
 ## Database Model
 The ERD for our library database is shown below. Breaking it down into plain English, many users can have one role, admin (or librarian), or customer. The database allows one user to have many cart items, and those cart items are copies of specific books. It is those specific copies that can be lent out to become reservations.
 

@@ -86,3 +86,11 @@ FROM reservation t1
 JOIN copy t2 ON t1.copy_id = t2.id
 JOIN "user" t3 ON t1.user_id = t3.id
 JOIN book t4 ON t2.book_id = t4.id;
+
+-- Read book reviews for books that have reviews ---
+
+SELECT * FROM book JOIN review ON book.id = review.book_id;
+
+-- Read book reviews for a specific book. Book id needs to be added manually ---
+
+SELECT * FROM book JOIN review ON book.id = review.book_id WHERE book.id = @id;
