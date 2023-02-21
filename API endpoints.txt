@@ -8,6 +8,8 @@ Users
 • POST /api/v1/register - Register a new user
 • POST /api/v1/login - Authenticate user and generate access token
 • GET /api/v1/users/{id}/reservations - Get a list of all reservations for a specific user
+• POST /api/v1/users/{id}/reservations - Make a new reservation for specific user
+• PUT /api/v1/users/{id}/reservations/{id} - Update reservation details for a specific reservation
 • DELETE /api/v1/users/{id}/reservations/{id} - User delete a specific reservation
 • GET /api/v1/users/{id}/cart - Get all copies for a specific user's cart
 • POST /api/v1/users/{id}/cart/copies/{id} - Add copies into cart
@@ -66,8 +68,7 @@ Reservations
 • GET /api/v1/reservations - Get a list of all reservations
 • GET /api/v1/reservations?active={active} - Get a list of all reservations that have or haven't past the due day
 • GET /api/v1/reservations/{id} - Get reservation details for a specific reservation
-• POST /api/v1/users/{id}/reservations - Make a new reservation for specific user
-• PUT /api/v1/users/{id}/reservations/{id} - Update reservation details for a specific reservation
+• PUT /api/reservations/{id} - Update reservation details for a specific reservation
 • DELETE /api/v1/reservations/{id} - Delete a specific reservation
 
 Reviews (Optional)
