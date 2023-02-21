@@ -1,11 +1,10 @@
 API Endpoints:
 
 Users
-• GET /users - Get a list of all users
+• GET admin/users - Get a list of all users
 • GET /users/{id} - Get user details for a specific user
-• POST /users - Add a new user
 • PUT /users/{id} - Update user details for a specific user
-• DELETE /users/{id} - Delete a specific user
+• DELETE admin/users/{id} - Delete a specific user
 • POST /register - Register a new user
 • POST /login - Authenticate user and generate access token
 • GET /users/{id}/reservations - Get a list of all reservations for a specific user
@@ -13,14 +12,13 @@ Users
 Books
 • GET /books - Get a list of all books
 • GET /books/{id} - Get book details for a specific book
-• POST /books - Add a new book
-• PUT /books/{id} - Update book details for a specific book
-• DELETE /books/{id} - Delete a specific book
+• POST admin/books - Add a new book
+• PUT admin/books/{id} - Update book details for a specific book
+• DELETE admin/books/{id} - Delete a specific book
 • GET /books/{id}/copies - Get a list of all copies for a specific book
 • GET /books/{id}/copies/{id} - Get a specific copy by ID
-• POST /books/{id}/copies - Create a new copy
-• PUT /books/{id}/copies/{id} - Change the availability of the copy by ID
-• DELETE /books/{id}/copies/{id} - Delete a specific copy by ID
+• POST admin/books/{id}/copies - Create a new copy
+• DELETE admin/books/{id}/copies/{id} - Delete a specific copy by ID
 • GET /books/{id}/authors - Get a list of all authors for a specific book
 • GET /books/{id}/publisher - Get the publisher for a specific book
 
@@ -28,42 +26,47 @@ Authors
 • GET /authors - Get a list of all authors
 • GET /authors/{id} - Get author details for a specific author
 • GET /authors/{id}//books - Get a list of all books for a specific author
-• POST /authors - Add a new author
-• PUT /authors/{id} - Update author details for a specific author
-• DELETE /authors/{id} - Delete a specific author
+• POST admin/authors - Add a new author
+• PUT admin/authors/{id} - Update author details for a specific author
+• DELETE admin/authors/{id} - Delete a specific author
 
 Publishers
 • GET /publishers - Get a list of all publishers
 • GET /publishers/{id} - Get publisher details for a specific publisher
 • GET /publishers/{id}//books - Get a list of all books for a specific publisher
-• POST /publishers - Add a new publisher
-• PUT /publishers/{id} - Update publisher details for a specific publisher
-• DELETE /publishers/{id} - Delete a specific publisher
+• POST admin/publishers - Add a new publisher
+• PUT admin/publishers/{id} - Update publisher details for a specific publisher
+• DELETE admin/publishers/{id} - Delete a specific publisher
 
 Categories
 • GET /categories - Get a list of all categories
 • GET /categories/{id} - Get category details for a specific category
-• GET /categories/{id}//books - Get a list of all books for a specific category
-• POST /categories - Add a new publisher
-• PUT /categories/{id} - Update category details for a specific category
-• DELETE /categories/{id} - Delete a specific category
+• GET /categories/{id}/books - Get a list of all books for a specific category
+• POST admin/categories - Add a new publisher
+• PUT admin/categories/{id} - Update category details for a specific category
+• DELETE admin/categories/{id} - Delete a specific category
 
 Carts
 • GET /users/{id}/cart - Get all copies for a specific user's cart
-• PUT /users/{id}/cart - Add copies into cart
+• POST /users/{id}/cart/copies/{id} - Add copies into cart
+• DELETE /users/{id}/cart/copies/{id} - Remove copies from cart
 
 Reservations
-• GET /reservations - Get a list of all reservations
-• GET /reservations/{id} - Get reservation details for a specific reservation
-• POST /reservations - Add a new reservation
-• PUT /reservations/{id} - Update reservation details for a specific reservation
-• DELETE /reservations/{id} - Delete a specific reservation
+• GET admin/reservations - Get a list of all reservations
+• GET admin/reservations/active - Get a list of all reservations that haven't past the due day => return true
+• GET admin/reservations/expired - Get a list of all reservations that have past the due day => return false
+• GET admin/reservations/{id} - Get reservation details for a specific reservation
+• POST users/{id}/reservations - Make a new reservation for specific user
+• PUT users/{id}/reservations/{id} - Update reservation details for a specific reservation
+• DELETE users/{id}/reservations/{id} - Delete a specific reservation
+• DELETE admin/reservations/{id} - Delete a specific reservation
 
 Reviews (Optional)
 • GET /books/{id}/reviews - Get a list of all reviews for a specific book
 • GET /books/{id}/reviews/{id} - Get review details for a specific review
-• POST /books/{id}/reviews - Add a new review
-• PUT /books/{id}/reviews/{id} - Update review details for a specific review
-• DELETE /books/{id}/reviews/{id} - Delete a specific review
+• POST users/{id}/books/{id}/reviews - Make a new review as a user
+• PUT users/{id}/books/{id}/reviews/{id} - Update review details for a specific review
+• DELETE users/{id}/books/{id}/reviews/{id} - Delete a specific review as a user
+• DELETE admin/books/{id}/reviews/{id} - Delete a specific review as an admin
 
 
