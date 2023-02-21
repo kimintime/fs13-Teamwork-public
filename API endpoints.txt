@@ -1,9 +1,8 @@
 API Endpoints:
 
 Users
-• GET /users - Get a list of all users
+• GET admin/users - Get a list of all users
 • GET /users/{id} - Get user details for a specific user
-• POST /users - Add a new user
 • PUT /users/{id} - Update user details for a specific user
 • DELETE admin/users/{id} - Delete a specific user
 • POST /register - Register a new user
