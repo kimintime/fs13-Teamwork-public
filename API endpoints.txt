@@ -1,0 +1,76 @@
+API Endpoints:
+
+Users
+• GET /api/v1/admin/users - Get a list of all users
+• GET /api/v1/users/{id} - Get user details for a specific user
+• PUT /api/v1/users/{id} - Update user details for a specific user
+• DELETE /api/v1/admin/users/{id} - Delete a specific user
+• POST /api/v1/register - Register a new user
+• POST /api/v1/login - Authenticate user and generate access token
+• GET /api/v1/users/{id}/reservations - Get a list of all reservations for a specific user
+
+Books
+• GET /api/v1/books - Get a list of all books
+• GET /api/v1/books?limit={limit}&offset={offset} - Get a list of all books but has pagination
+• GET /api/v1/books/{id} - Get book details for a specific book
+• POST /api/v1/admin/books - Add a new book
+• PUT /api/v1admin/books/{id} - Update book details for a specific book
+• DELETE /api/v1/admin/books/{id} - Delete a specific book
+• GET /api/v1/books/{id}/copies - Get a list of all copies for a specific book
+• GET /api/v1/books/{id}/copies/{id} - Get a specific copy by ID
+• POST /api/v1/admin/books/{id}/copies - Create a new copy
+• DELETE /api/v1/admin/books/{id}/copies/{id} - Delete a specific copy by ID
+• GET /api/v1/books/{id}/authors - Get a list of all authors for a specific book
+• GET /api/v1/books/{id}/publisher - Get the publisher for a specific book
+
+Authors
+• GET /api/v1/authors - Get a list of all authors
+• GET /api/v1/authors/{id} - Get author details for a specific author
+• GET /api/v1/authors/{id}/books - Get a list of all books for a specific author
+• GET /api/v1/authors/{id}/books?limit={limit}&offset={offset} - Get a list of all books for a specific author but has pagination
+• POST /api/v1/admin/authors - Add a new author
+• PUT /api/v1/admin/authors/{id} - Update author details for a specific author
+• DELETE /api/v1/admin/authors/{id} - Delete a specific author
+
+Publishers
+• GET /api/v1/publishers - Get a list of all publishers
+• GET /api/v1/publishers/{id} - Get publisher details for a specific publisher
+• GET /api/v1/publishers/{id}/books - Get a list of all books for a specific publisher
+• GET /api/v1/publishers/{id}/books?limit={limit}&offset={offset} - Get a list of all books for a specific publisher but has pagination
+• POST /api/v1/admin/publishers - Add a new publisher
+• PUT /api/v1/admin/publishers/{id} - Update publisher details for a specific publisher
+• DELETE /api/v1/admin/publishers/{id} - Delete a specific publisher
+
+Categories
+• GET /api/v1/categories - Get a list of all categories
+• GET /api/v1/categories/{id} - Get category details for a specific category
+• GET /api/v1/categories/{id}/books - Get a list of all books for a specific category
+• GET /api/v1/categories/{id}/books?limit={limit}&offset={offset} - Get a list of all books for a specific category but has pagination
+• POST /api/v1/admin/categories - Add a new publisher
+• PUT /api/v1/admin/categories/{id} - Update category details for a specific category
+• DELETE /api/v1/admin/categories/{id} - Delete a specific category
+
+Carts
+• GET /api/v1/users/{id}/cart - Get all copies for a specific user's cart
+• POST /api/v1/users/{id}/cart/copies/{id} - Add copies into cart
+• DELETE /api/v1/users/{id}/cart/copies/{id} - Remove copies from cart
+
+Reservations
+• GET /api/v1/admin/reservations - Get a list of all reservations
+• GET /api/v1/admin/reservations/active - Get a list of all reservations that haven't past the due day => return true
+• GET /api/v1/admin/reservations/expired - Get a list of all reservations that have past the due day => return false
+• GET /api/v1/admin/reservations/{id} - Get reservation details for a specific reservation
+• POST /api/v1/users/{id}/reservations - Make a new reservation for specific user
+• PUT /api/v1/users/{id}/reservations/{id} - Update reservation details for a specific reservation
+• DELETE /api/v1/users/{id}/reservations/{id} - Delete a specific reservation
+• DELETE /api/v1/admin/reservations/{id} - Delete a specific reservation
+
+Reviews (Optional)
+• GET /api/v1/books/{id}/reviews - Get a list of all reviews for a specific book
+• GET /api/v1/books/{id}/reviews/{id} - Get review details for a specific review
+• POST /api/v1/users/{id}/books/{id}/reviews - Make a new review as a user
+• PUT /api/v1/users/{id}/books/{id}/reviews/{id} - Update review details for a specific review
+• DELETE /api/v1/users/{id}/books/{id}/reviews/{id} - Delete a specific review as a user
+• DELETE /api/v1/admin/books/{id}/reviews/{id} - Delete a specific review as an admin
+
+
